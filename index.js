@@ -14,14 +14,14 @@ router.get("/resize", async (ctx, next) => {
     return;
   }
   const { w: width, h: height } = ctx.request.query;
-  if (!!width && !!height) {
+  if (!!width) {
     const downloaded = await axios.get(ctx.request.query.url, {
       responseType: "arraybuffer",
     });
     const buffer = Buffer.from(downloaded.data, "utf-8");
     const image = sharp(buffer);
     const metadata = await image.metadata();
-    image.resize(parseInt(width, 10), parseInt(height, 10));
+    image.resize(parseInt(width, 10), !!height ? parseInt(height, 10) : null);
     ctx.type = "image/" + metadata.format;
     ctx.body = await image.toBuffer();
   } else {
