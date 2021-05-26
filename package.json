@@ -1,0 +1,15 @@
+{
+  "name": "image-resizing-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sopheaksek/image-resize-service.git",
+  "author": "spk91011@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "koa": "^2.13.1",
+    "sharp": "^0.28.3"
+  }
+}
