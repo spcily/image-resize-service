@@ -13,11 +13,11 @@ router.get("/resize", async (ctx, next) => {
     ctx.body = "invalid param";
     return;
   }
+  const { w: width, h: height } = ctx.request.query;
   if (!!width && !!height) {
     const downloaded = await axios.get(ctx.request.query.url, {
       responseType: "arraybuffer",
     });
-    const { w: width, h: height } = ctx.request.query;
     const buffer = Buffer.from(downloaded.data, "utf-8");
     const image = sharp(buffer);
     const metadata = await image.metadata();
